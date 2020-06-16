@@ -1,7 +1,14 @@
 # ASKAA
  为创新实践写的后端（只有增删改查）
 
-## 后端接口说明
+## 相关技术说明
+
+* **Golang：一门新的程序设计语言**
+* **Gin：Golang的一种框架**
+* **GORM：对于Golang语言友好的一种开发人员ORM库**
+* **ORM：一种对象关系映射，用来将对象和数据库之间的映射的元数据，将面向对象语言程序中的对象自动持久化到关系数据库中。 本质上就是将数据从一种形式转换到另外一种形式。**
+
+## 程序说明
 
 程序说明，就是一个很简单的对于
 
@@ -52,6 +59,94 @@ go build
 然后运行生成的可执行文件，一般是文件夹的名字
 用Nginx反向代理运行就可以了
 （默认端口号:9090）
+```
+
+##  后端接口说明
+
+### 系统接口：
+
+`/question`连接地址
+
+**GET `/question?qestion=问题` (Find Question)**
+
+返回示例：
+
+```json
+CreatedAt: "0001-01-01T00:00:00Z"
+DeletedAt: null
+ID: 4
+UpdatedAt: "0001-01-01T00:00:00Z"
+answer: "XXX"
+depart: "XXX"
+name: "XXX"
+question: "xxx"
+```
+
+**POST `/question`(Create Question)**
+
+输入示例
+
+```json
+"question":"xxx"
+"answer":"xxx"
+"depart":"xxx"
+"name":"xxx"
+```
+
+返回示例：
+
+成功
+
+```json
+"status":200,
+"message":"Question insert ok",
+"message_id":xxx,
+```
+
+失败
+
+```json
+"message" : "database error"
+或者
+"message": "error payload"
+```
+
+**PUT`/question:id`(update question)**
+
+输入示例
+
+```json
+"question":"xxx"
+"answer":"xxx"
+"depart":"xxx"
+"name":"xxx"
+"id":id,
+```
+
+返回示例：
+
+```json
+"status":426,
+"message":"Question update ok",
+"message_id":ID,
+```
+
+失败
+
+```json
+"message" : "update error"
+或者
+"message": "error payload"
+```
+
+**DELETE`/question:id`**
+
+```json
+"message":"Delete Error",
+```
+
+```json
+"message":"Delete Successful",
 ```
 
 
